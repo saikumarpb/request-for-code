@@ -27,12 +27,10 @@ export function generateBitcoinWallet() {
         throw new Error('Private key not found');
     }
 
-    // Private Key in Buffer format
     const privateKey = node.privateKey;
 
-    // Use elliptic to get compressed public key from private key
     const keyPair = ec.keyFromPrivate(privateKey);
-    const publicKey = keyPair.getPublic(true, 'hex'); // Compressed public key
+    const publicKey = keyPair.getPublic(true, 'hex');
 
     const btcAddress = bitcoin.payments.p2pkh({
         pubkey: node.publicKey,
@@ -41,8 +39,8 @@ export function generateBitcoinWallet() {
 
     return {
         address: btcAddress,
-        privateKey: privateKey.toString('hex'), // Return the private key in hex format
-        publicKey: publicKey, // Return the public key in compressed hex format
+        privateKey: privateKey.toString('hex'),
+        publicKey: publicKey,
         mnemonic: mnemonic,
     };
 }

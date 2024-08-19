@@ -1,4 +1,4 @@
-import { redis } from './../redis';
+import { redis } from '../../redis';
 import { Utxo, UtxoDetails, UtxoSchema } from './types';
 import { getUtxoKey, parseAmount } from './utils';
 
